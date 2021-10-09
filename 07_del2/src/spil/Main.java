@@ -11,9 +11,9 @@ enum PLAYER {
 //The main Class which runs the game
 public class Main {
     //Variables for player score and score required to win
-    private int playerOneScore = 0;
-    private int playerTwoScore = 0;
-    private int winScore = 40;
+    private int playerOneBalance = 1000;
+    private int playerTwoBalance = 1000;
+    private int winScore = 3000;
     //Variable that alters which player's turn to roll the dice
     private PLAYER currentPlayer = PLAYER.PLAYER_ONE;
 
@@ -21,20 +21,20 @@ public class Main {
     Scanner scan = new Scanner(System.in);
     private String userInput;
 
-    public int getPlayerOneScore() {
-        return playerOneScore;
+    public int getPlayerOneBalance() {
+        return playerOneBalance;
     }
 
-    public void setPlayerOneScore(int playerOneScore) {
-        this.playerOneScore = playerOneScore;
+    public void setPlayerOneBalance(int playerOneBalance) {
+        this.playerOneBalance = playerOneBalance;
     }
 
-    public int getPlayerTwoScore() {
-        return playerTwoScore;
+    public int getPlayerTwoBalance() {
+        return playerTwoBalance;
     }
 
-    public void setPlayerTwoScore(int playerTwoScore) {
-        this.playerTwoScore = playerTwoScore;
+    public void setPlayerTwoBalance(int playerTwoBalance) {
+        this.playerTwoBalance = playerTwoBalance;
     }
 
     public RollingDice getRollingDice() {
@@ -94,7 +94,7 @@ public class Main {
             //If it Player 1's turn, print out the scores and allow Player 1 to roll the dice
             case PLAYER_ONE:
                 System.out.println("Player 1's turn to roll the dice");
-                System.out.println("Player 1 Score: " + getPlayerOneScore() + "\nPlayer 2 Score: " + getPlayerTwoScore() + "\n");
+                System.out.println("Player 1 Score: " + getPlayerOneBalance() + "\nPlayer 2 Score: " + getPlayerTwoBalance() + "\n");
 
                 do {
                     userInput = scan.nextLine();
@@ -102,12 +102,12 @@ public class Main {
 
                 //Roll the dice and add the score to the player's total score, then change turns
                 getRollingDice().rollTheDice();
-                setPlayerOneScore(getPlayerOneScore() + getRollingDice().getSum());
+                setPlayerOneBalance(getPlayerOneBalance() + getRollingDice().getSum());
                 printSeperator();
 
                 //Checks if Player One has reached 40 points or more and ends the game
-                if (getPlayerOneScore() >= winScore) {
-                    System.out.println("Player 1 har vundet med " + getPlayerOneScore() + " points!");
+                if (getPlayerOneBalance() >= winScore) {
+                    System.out.println("Player 1 har vundet med " + getPlayerOneBalance() + " points!");
                     break;
                 }
 
@@ -119,7 +119,7 @@ public class Main {
             //If it Player 2's turn, print out the scores and allow Player 1 to roll the dice
             case PLAYER_TWO:
                 System.out.println("Player 2's turn to roll the dice");
-                System.out.println("Player 1 Score: " + getPlayerOneScore() + "\nPlayer 2 Score: " + getPlayerTwoScore() + "\n");
+                System.out.println("Player 1 Score: " + getPlayerOneBalance() + "\nPlayer 2 Score: " + getPlayerTwoBalance() + "\n");
 
                 do {
                     userInput = scan.nextLine();
@@ -127,12 +127,12 @@ public class Main {
 
                 //Roll the dice and add the score to the player's total score, then change turns
                 getRollingDice().rollTheDice();
-                setPlayerTwoScore(getPlayerTwoScore() + getRollingDice().getSum());
+                setPlayerTwoBalance(getPlayerTwoBalance() + getRollingDice().getSum());
                 printSeperator();
 
                 //Checks if Player Two has reached 40 points or more and ends the game
-                if (getPlayerTwoScore() >= winScore) {
-                    System.out.println("Player 2 har vundet med " + getPlayerTwoScore() + " points!");
+                if (getPlayerTwoBalance() >= winScore) {
+                    System.out.println("Player 2 har vundet med " + getPlayerTwoBalance() + " points!");
                     break;
                 }
 
