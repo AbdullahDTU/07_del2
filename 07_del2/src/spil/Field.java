@@ -7,17 +7,11 @@ public class Field {
         int Tower = 250;
         int Crater = 100;
         int PalaceGates = 100;
-<<<<<<< Updated upstream
         int ColdDesert = 20;
         int WalledCity = 180;
-=======
-        int ColdDesert= 20;
-        int WalledCity= 180;
         int Monastary = 0;
-        int BlackCave =-70;
->>>>>>> Stashed changes
-
-
+        int BlackCave = -70;
+        
         //Flavor text of each field
         String TowerText = "You have entered the Tower and found a chest with " + Tower + " Gold pieces";
         String CraterText = "You have fallen down a Crater! " + Crater + " of your gold pieces have fallen out of your pocket on the way down";
