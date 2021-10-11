@@ -10,7 +10,9 @@ public class Field {
         int ColdDesert = 20;
         int WalledCity = 180;
         int Monastary = 0;
-        int BlackCave = -70;
+        int BlackCave = 70;
+        int HutsInTheMountain = 60;
+        int TheWerewall = 80;
         
         //Flavor text of each field
         String TowerText = "You have entered the Tower and found a chest with " + Tower + " Gold pieces";
@@ -20,6 +22,9 @@ public class Field {
         String WalledCityText = "You have entered the Walled City and for that you get " + WalledCity + " Gold pieces";
         String MonastaryText = "You have now reached a Monastery, you received" + Monastary + "coins";
         String BlackCaveText = "Watch out! BlackCave ahead, you will now be punish by" + BlackCave + "coins";
+        String HutsInTheMountainText = "You found some Huts in the Moutain with " + HutsInTheMountain + "leftover coins";
+        String TheWerewallText = "You have come across the werewall. You lose" + TheWerewall + "coins but you get an extra turn";
+
 
 
         //Printing out flavor text
@@ -30,6 +35,9 @@ public class Field {
         System.out.println(WalledCityText);
         System.out.println(MonastaryText);
         System.out.println(BlackCaveText);
+        System.out.println(HutsInTheMountainText);
+        System.out.println(TheWerewallText);
+
 
 
     }
