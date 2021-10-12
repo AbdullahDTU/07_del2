@@ -1,47 +1,75 @@
 package spil;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
 public class Field {
 
-    public static void main(String[] args) {
-        //The gold amount of the different fields
-        int Tower = 250;
-        int Crater = -100;
-        int PalaceGates = 100;
-        int ColdDesert = -20;
-        int WalledCity = 180;
-        int Monastary = 0;
-        int BlackCave = -70;
-        int HutsInTheMountain = 60;
-        int TheWerewall = -80;
-        int ThePit = -50;
-        int GoldMine = 650;
+    private int fieldPrice;
+    private String fieldName;
+    private String fieldText;
 
-        //Flavor text of each field
-        String TowerText = "You have entered the Tower and found a chest with " + Tower + " Gold pieces";
-        String CraterText = "You have fallen down a Crater! " + Crater + " of your gold pieces have fallen out of your pocket on the way down";
-        String PalaceGatesText = "You have entered through the Palace Gates. It's crowded and you manage to steal a gold pouch containing " + PalaceGates + " gold pieces from a man passing by";
-        String ColdDesertText = "You have entered the Cold Desert and we will take " + ColdDesert + " Gold pieces";
-        String WalledCityText = "You have entered the Walled City and for that you get " + WalledCity + " Gold pieces";
-        String MonastaryText = "You have now reached a Monastery, you received" + Monastary + "coins";
-        String BlackCaveText = "Watch out! BlackCave ahead, you will now be punish by" + BlackCave + "coins";
-        String HutsInTheMountainText = "You found some Huts in the Moutain with " + HutsInTheMountain + "leftover coins";
-        String TheWerewallText = "You have come across the werewall. You lose" + TheWerewall + "coins but you get an extra turn";
-        String ThePitText = "You barely hang into the edge to prevent yourself falling into the Pit " + ThePit + " Gold pieces slip out of your pocket";
-        String GoldMineText = "You stumple upon a mine filled with Gold you " + GoldMine + " Gold pieces";
+    public int getFieldPrice() {
+        return fieldPrice;
+    }
 
-        //Printing out flavor text
-        System.out.println(TowerText);
-        System.out.println(CraterText);
-        System.out.println(PalaceGatesText);
-        System.out.println(ColdDesertText);
-        System.out.println(WalledCityText);
-        System.out.println(MonastaryText);
-        System.out.println(BlackCaveText);
-        System.out.println(HutsInTheMountainText);
-        System.out.println(TheWerewallText);
-        System.out.println(ThePitText);
-        System.out.println(GoldMineText);
+    public void setFieldPrice(int fieldPrice) {
+        this.fieldPrice = fieldPrice;
+    }
 
+    public String getFieldName() {
+        return fieldName;
+    }
+
+    public void setFieldName(String fieldName) {
+        this.fieldName = fieldName;
+    }
+
+    public String getFieldText() {
+        return fieldText;
+    }
+
+    public void setFieldText(String fieldText) {
+        this.fieldText = fieldText;
+    }
+
+    public Field(int fieldPrice, String fieldName, String fieldText) {
+        this.fieldPrice = fieldPrice;
+        this.fieldName = fieldName;
+        this.fieldText = fieldText;
+    }
+
+    private List<Field> fields;
+
+    public void setUpFields() {
+        Field[] localFields = new Field[]{
+                new Field(FieldConstants.Tower, FieldConstants.TowerName, FieldConstants.TowerText),
+                new Field(FieldConstants.Crater, FieldConstants.CraterName, FieldConstants.CraterText),
+                new Field(FieldConstants.PalaceGates, FieldConstants.PalaceGatesName, FieldConstants.PalaceGatesText),
+                new Field(FieldConstants.ColdDesert, FieldConstants.ColdDesertName, FieldConstants.ColdDesertText),
+                new Field(FieldConstants.WalledCity, FieldConstants.WalledCityName, FieldConstants.WalledCityText),
+                new Field(FieldConstants.Monastary, FieldConstants.MonastaryName, FieldConstants.MonastaryText),
+                new Field(FieldConstants.BlackCave, FieldConstants.BlackCaveName, FieldConstants.BlackCaveText),
+                new Field(FieldConstants.HutsInTheMountain, FieldConstants.HutsInTheMountainName, FieldConstants.HutsInTheMountainText),
+                new Field(FieldConstants.TheWerewall, FieldConstants.TheWerewallName, FieldConstants.TheWerewallText),
+                new Field(FieldConstants.ThePit, FieldConstants.ThePitName, FieldConstants.ThePitText),
+                new Field(FieldConstants.GoldMine, FieldConstants.GoldMineName, FieldConstants.GoldMineText)
+        };
+/*
+        this.fields.add(
+                new Field(FieldConstants.Tower, FieldConstants.TowerName, FieldConstants.TowerText)
+        );
+        this.fields.add(
+                new Field(FieldConstants.Tower, FieldConstants.TowerName, FieldConstants.TowerText)
+        );
+
+ */
+
+        Collections.addAll(this.fields, localFields);
 
     }
+
+
 }
