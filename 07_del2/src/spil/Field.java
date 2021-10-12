@@ -5,15 +5,15 @@ public class Field {
     public static void main(String[] args) {
         //The gold amount of the different fields
         int Tower = 250;
-        int Crater = 100;
+        int Crater = -100;
         int PalaceGates = 100;
-        int ColdDesert = 20;
+        int ColdDesert = -20;
         int WalledCity = 180;
         int Monastary = 0;
-        int BlackCave = 70;
+        int BlackCave = -70;
         int HutsInTheMountain = 60;
-        int TheWerewall = 80;
-        int ThePit = 50;
+        int TheWerewall = -80;
+        int ThePit = -50;
         int GoldMine = 650;
 
         //Flavor text of each field
