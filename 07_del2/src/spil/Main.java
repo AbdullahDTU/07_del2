@@ -1,40 +1,38 @@
 package spil;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
-
-//Variable used to change between which player is rolling the dice
-enum PLAYER {
-    PLAYER_ONE,
-    PLAYER_TWO
-}
 
 //The main Class which runs the game
 public class Main {
-    //Variables for player score and score required to win
-    private int playerOneBalance = 1000;
-    private int playerTwoBalance = 1000;
-    private int winScore = 3000;
-    //Variable that alters which player's turn to roll the dice
-    private PLAYER currentPlayer = PLAYER.PLAYER_ONE;
+    private boolean gameHasFinished;
+    private Board board;
+    private RollingDice rollingDice;
+    private List<Player> players; // List of players
 
     //Scanner to check for user keypress input
     Scanner scan = new Scanner(System.in);
     private String userInput;
 
-    public int getPlayerOneBalance() {
-        return playerOneBalance;
+    public boolean isGameHasFinished() {
+        return gameHasFinished;
     }
 
-    public void setPlayerOneBalance(int playerOneBalance) {
-        this.playerOneBalance = playerOneBalance;
+    public void setGameHasFinished(boolean gameHasFinished) {
+        this.gameHasFinished = gameHasFinished;
     }
 
-    public int getPlayerTwoBalance() {
-        return playerTwoBalance;
+    public Board getBoard() {
+        return board;
     }
 
-    public void setPlayerTwoBalance(int playerTwoBalance) {
-        this.playerTwoBalance = playerTwoBalance;
+    public void setBoard(Board board) {
+        this.board = board;
+    }
+
+    public void initBoard() {
+        this.board = new Board();
     }
 
     public RollingDice getRollingDice() {
@@ -49,15 +47,61 @@ public class Main {
         this.rollingDice = new RollingDice();
     }
 
-    private RollingDice rollingDice;
+    public List<Player> getPlayers() {
+        return players;
+    }
+
+    public void setPlayers(List<Player> players) {
+        this.players = players;
+    }
+
+    //Method to add players
+    public void setupPlayers(Player... players) {
+        List<Player> playersToAdd = new ArrayList<Player>();
+
+        for (Player player : players) {
+            List<Field> startFields = new ArrayList<Field>();
+            Account newPlayerAccount = new Account(
+                    Constants.START_BALANCE,
+                    startFields
+            );
+
+            player.setPlayerPosition(Constants.START_POSITION);
+            player.setAccount(newPlayerAccount);
+
+            playersToAdd.add(player);
+        }
+
+        this.setPlayers(playersToAdd);
+    }
 
     //Runs the different methods
     public static void main(String[] args) {
         Main main = new Main();
 
+        main.initBoard();
         main.initRollingDice();
-        main.printWelcomeMessage();
-        main.performDiceRoll();
+
+
+        //Creating two players with 0 money
+        Player playerOne = new Player("PlayerOne", null);
+        Player playerTwo = new Player("PlayerTwo", null);
+
+        //Setting up the players with their Variables
+        main.setupPlayers(playerOne, playerTwo);
+
+        for (Player player : main.players) {
+            System.out.println(player.getPlayerName());
+            System.out.println(player.getAccount().getBalance());
+        }
+
+        do {
+            main.playRound();
+        } while (!main.gameHasFinished);
+
+
+        //main.printWelcomeMessage();
+        //main.performDiceRoll();
     }
 
     //A one time welcome message printed at the start of the game
@@ -68,16 +112,11 @@ public class Main {
         System.out.println("\n");
     }
 
-    //Method to change the players turn
-    private void switchCurrentPlayer() {
-        switch (currentPlayer) {
-            case PLAYER_ONE:
-                this.currentPlayer = PLAYER.PLAYER_TWO;
-                break;
+    private void printWinMessage() {
+        System.out.println("Game has finished.");
 
-            case PLAYER_TWO:
-                this.currentPlayer = PLAYER.PLAYER_ONE;
-                break;
+        for (Player player : this.players) {
+            System.out.println("Player " + player.getPlayerName() + " with balance of " + player.getAccount().getBalance());
         }
     }
 
@@ -86,6 +125,85 @@ public class Main {
         System.out.println("\n");
     }
 
+    private void playRound() {
+        for (Player player : this.players) {
+
+            //Manual pressing of Enter to roll dice
+            do {
+                userInput = scan.nextLine();
+            } while (!userInput.equals(""));
+
+            // Roll the Dice
+            getRollingDice().rollTheDice();
+            int diceValue = getRollingDice().getSum();
+
+            // Player position
+            int currentPlayerPosition = player.getPlayerPosition();
+            int newPlayerPosition = this.calculateNewPlayerPosition(currentPlayerPosition, diceValue);
+            //int newPlayerPosition = diceValue;
+
+            //player.setPlayerPosition(newPlayerPosition);
+            player.setPlayerPosition(Constants.START_POSITION);
+
+            // Get field location
+            Field currentFieldOLD = this.getBoard().getFields().get(currentPlayerPosition);
+            //Field currentFieldOLD = this.getBoard().getFields().get(currentPlayerPosition);
+            Field currentField = this.getBoard().getFields().get(newPlayerPosition);
+
+            // Get field Price
+            int currentFieldPrice = currentField.getFieldPrice();
+            int currentPlayerBalance = player.getAccount().getBalance();
+            int newPlayerBalance = currentPlayerBalance + currentFieldPrice;
+            player.getAccount().setBalance(newPlayerBalance);
+
+            // Print info Test
+            /*
+            System.out.println("Player: " + player.getPlayerName());
+            System.out.println("Old Balance: " + currentPlayerBalance);
+            System.out.println("New Balance: " + newPlayerBalance);
+            System.out.println("Sum: " + diceValue);
+            System.out.println("Old Field: " + currentPlayerPosition);
+            System.out.println("Old FieldName: " + currentFieldOLD.getFieldName());
+            System.out.println("New Field: " + newPlayerPosition);
+            System.out.println("New FieldPrice: " + currentField.getFieldPrice());
+            System.out.println("New FieldName: " + currentField.getFieldName());
+            System.out.println("\n");
+
+             */
+
+            //Print Info
+            System.out.println("Sum: " + diceValue);
+            System.out.println("Player: " + player.getPlayerName());
+            System.out.println("Old Balance: " + currentPlayerBalance);
+            System.out.println("New Balance: " + newPlayerBalance);
+            System.out.println("New FieldName: " + currentField.getFieldName());
+            System.out.println("New FieldPrice: " + currentField.getFieldPrice());
+            System.out.println("New FieldText: " + currentField.getFieldText());
+            System.out.println("\n");
+
+            if (Constants.WIN_SCORE <= player.getAccount().getBalance()) {
+                this.gameHasFinished = true;
+                printWinMessage();
+                break;
+            }
+        }
+    }
+
+    private int calculateNewPlayerPosition(int currentPlayerPosition, int diceRollSum) {
+        int possibleNewPosition = currentPlayerPosition + diceRollSum -2;
+        int numberOfFields = this.getBoard().getFields().size();
+
+        /*
+        if (numberOfFields <= possibleNewPosition) {
+            return 0;
+        }
+        */
+
+        return possibleNewPosition;
+    }
+
+
+/*
     //Method that allows the players to roll the dice, add the value to the players' scores and change turns
     private void performDiceRoll() {
 
@@ -102,7 +220,9 @@ public class Main {
 
                 //Roll the dice and add the score to the player's total score, then change turns
                 getRollingDice().rollTheDice();
+
                 setPlayerOneBalance(getPlayerOneBalance() + getRollingDice().getSum());
+
                 printSeperator();
 
                 //Checks if Player One has reached 40 points or more and ends the game
@@ -142,5 +262,7 @@ public class Main {
                 break;
         }
 
+
     }
+    */
 }

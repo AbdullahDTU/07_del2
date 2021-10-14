@@ -1,14 +1,55 @@
 package spil;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
 public class Field {
 
-    public static void main(String[] args) {
-        //The gold amount of the different Fields
-        int Tower = 250;
+    //Variables for field Price, Name and Text
+    private int fieldPrice;
+    private int fieldID;
+    private String fieldName;
+    private String fieldText;
 
-        //Flavor text of each field
-        String TowerText = "You have entered the Tower and found a chest with " + Tower + " Gold pieces";
-
-        System.out.println(TowerText);
+    public int getFieldPrice() {
+        return fieldPrice;
     }
+
+    public void setFieldPrice(int fieldPrice) {
+        this.fieldPrice = fieldPrice;
+    }
+
+    public int getFieldID() {
+        return fieldID;
+    }
+
+    public void setFieldID(int fieldID) {
+        this.fieldID = fieldID;
+    }
+
+    public String getFieldName() {
+        return fieldName;
+    }
+
+    public void setFieldName(String fieldName) {
+        this.fieldName = fieldName;
+    }
+
+    public String getFieldText() {
+        return fieldText;
+    }
+
+    public void setFieldText(String fieldText) {
+        this.fieldText = fieldText;
+    }
+
+    public Field(int fieldID, int fieldPrice, String fieldName, String fieldText) {
+        this.fieldID = fieldID;
+        this.fieldPrice = fieldPrice;
+        this.fieldName = fieldName;
+        this.fieldText = fieldText;
+    }
+
 }
