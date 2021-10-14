@@ -2,7 +2,7 @@ package spil;
 
 public class Player {
     private String playerName;
-    //private int playerPosition;
+    private int playerPosition;
     private Account account;
 
     public String getPlayerName() {
@@ -13,9 +13,12 @@ public class Player {
         this.playerName = playerName;
     }
 
-    public Player(String playerName, Account account) {
-        this.playerName = playerName;
-        this.account = account;
+    public int getPlayerPosition() {
+        return playerPosition;
+    }
+
+    public void setPlayerPosition(int playerPosition) {
+        this.playerPosition = playerPosition;
     }
 
     public Account getAccount() {
@@ -26,6 +29,16 @@ public class Player {
         this.account = account;
     }
 
+    public Player(String playerName, int playerPosition, Account account) {
+        this.playerName = playerName;
+        this.playerPosition = playerPosition;
+        this.account = account;
+    }
+
+    public Player(String playerName, Account account) {
+        this.playerName = playerName;
+        this.account = account;
+    }
 
 
 }
