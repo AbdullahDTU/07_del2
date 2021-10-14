@@ -3,6 +3,17 @@ package spil;
 public class FieldConstants {
 
     //Field number/ID for each field
+    public static final int TOWER_ID = 2;
+    public static final int CRATER_ID = 3;
+    public static final int PALACE_GATES_ID = 4;
+    public static final int COLD_DESERT_ID = 5;
+    public static final int WALLED_CITY_ID = 6;
+    public static final int MONASTARY_ID = 7;
+    public static final int BLACK_CAVE_ID = 8;
+    public static final int HUTS_IN_THE_MOUNTAIN_ID = 9;
+    public static final int THE_WEREWALL_ID = 10;
+    public static final int THE_PIT_ID = 11;
+    public static final int GOLD_MIN_ID = 12;
 
     //The gold amount of the different fields
     public static final int TOWER_AMOUNT = 250;
