@@ -2,7 +2,7 @@ package spil;
 
 public class Player {
     private String playerName;
-    private int playerPosition;
+    //private int playerPosition;
     private Account account;
 
     public String getPlayerName() {

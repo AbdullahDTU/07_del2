@@ -3,6 +3,7 @@ package spil;
 import java.util.List;
 
 public class Account {
+    //Variables for account
     private int balance = 0;
     private List<Field> ownedProperties;
 

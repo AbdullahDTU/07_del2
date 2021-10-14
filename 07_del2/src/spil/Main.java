@@ -8,6 +8,7 @@ import java.util.Scanner;
 public class Main {
     private RollingDice rollingDice;
 
+    //List of players
     private List<Player> players;
 
     //Scanner to check for user keypress input
@@ -34,6 +35,7 @@ public class Main {
         this.players = players;
     }
 
+    //Method to add players
     public void setupPlayers(Player... players) {
         List<Player> playersToAdd = new ArrayList<Player>();
 
@@ -56,9 +58,11 @@ public class Main {
     public static void main(String[] args) {
         Main main = new Main();
 
+        //Creating two players with 0 money
         Player playerOne = new Player("PlayerOne", null);
         Player playerTwo = new Player("PlayerTwo", null);
 
+        //Setting up the players with their Variables
         main.setupPlayers(playerOne, playerTwo);
         System.out.println(main.players);
 
