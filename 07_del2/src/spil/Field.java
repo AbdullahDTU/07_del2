@@ -7,6 +7,7 @@ import java.util.List;
 
 public class Field {
 
+    //Variables for field Price, Name and Text
     private int fieldPrice;
     private String fieldName;
     private String fieldText;
@@ -41,8 +42,10 @@ public class Field {
         this.fieldText = fieldText;
     }
 
+    //Arraylist for Field
     private List<Field> fields;
 
+    //Constructor for Field that creates objects
     public void setUpFields() {
         Field[] localFields = new Field[]{
                 new Field(FieldConstants.Tower, FieldConstants.TowerName, FieldConstants.TowerText),
