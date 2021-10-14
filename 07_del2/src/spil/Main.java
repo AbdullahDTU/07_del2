@@ -1,41 +1,18 @@
 package spil;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
-
-//Variable used to change between which player is rolling the dice
-enum PLAYER {
-    PLAYER_ONE,
-    PLAYER_TWO
-}
 
 //The main Class which runs the game
 public class Main {
-    //Variables for player score and score required to win
-    private int playerOneBalance = 1000;
-    private int playerTwoBalance = 1000;
-    private int winScore = 3000;
-    //Variable that alters which player's turn to roll the dice
-    private PLAYER currentPlayer = PLAYER.PLAYER_ONE;
+    private RollingDice rollingDice;
+
+    private List<Player> players;
 
     //Scanner to check for user keypress input
     Scanner scan = new Scanner(System.in);
     private String userInput;
-
-    public int getPlayerOneBalance() {
-        return playerOneBalance;
-    }
-
-    public void setPlayerOneBalance(int playerOneBalance) {
-        this.playerOneBalance = playerOneBalance;
-    }
-
-    public int getPlayerTwoBalance() {
-        return playerTwoBalance;
-    }
-
-    public void setPlayerTwoBalance(int playerTwoBalance) {
-        this.playerTwoBalance = playerTwoBalance;
-    }
 
     public RollingDice getRollingDice() {
         return rollingDice;
@@ -49,15 +26,51 @@ public class Main {
         this.rollingDice = new RollingDice();
     }
 
-    private RollingDice rollingDice;
+    public List<Player> getPlayers() {
+        return players;
+    }
+
+    public void setPlayers(List<Player> players) {
+        this.players = players;
+    }
+
+    public void setupPlayers(Player... players) {
+        List<Player> playersToAdd = new ArrayList<Player>();
+
+        for (Player player: players) {
+            List<Field> startFields = new ArrayList<Field>();
+            Account newPlayerAccount = new Account(
+                    Constants.START_BALANCE,
+                    startFields
+            );
+
+            player.setAccount(newPlayerAccount);
+
+            playersToAdd.add(player);
+        }
+
+        this.setPlayers(playersToAdd);
+    }
 
     //Runs the different methods
     public static void main(String[] args) {
         Main main = new Main();
 
-        main.initRollingDice();
-        main.printWelcomeMessage();
-        main.performDiceRoll();
+        Player playerOne = new Player("PlayerOne", null);
+        Player playerTwo = new Player("PlayerTwo", null);
+
+        main.setupPlayers(playerOne, playerTwo);
+        System.out.println(main.players);
+
+        for (Player player : main.players){
+            System.out.println(player.getPlayerName());
+            System.out.println(player.getAccount().getBalance());
+        }
+
+
+        //main.initRollingDice();
+        //main.printWelcomeMessage();
+        //main.performDiceRoll();
     }
 
     //A one time welcome message printed at the start of the game
@@ -68,24 +81,11 @@ public class Main {
         System.out.println("\n");
     }
 
-    //Method to change the players turn
-    private void switchCurrentPlayer() {
-        switch (currentPlayer) {
-            case PLAYER_ONE:
-                this.currentPlayer = PLAYER.PLAYER_TWO;
-                break;
-
-            case PLAYER_TWO:
-                this.currentPlayer = PLAYER.PLAYER_ONE;
-                break;
-        }
-    }
-
     //Prints an empty line to make text more readable
     private void printSeperator() {
         System.out.println("\n");
     }
-
+/*
     //Method that allows the players to roll the dice, add the value to the players' scores and change turns
     private void performDiceRoll() {
 
@@ -102,7 +102,9 @@ public class Main {
 
                 //Roll the dice and add the score to the player's total score, then change turns
                 getRollingDice().rollTheDice();
+
                 setPlayerOneBalance(getPlayerOneBalance() + getRollingDice().getSum());
+
                 printSeperator();
 
                 //Checks if Player One has reached 40 points or more and ends the game
@@ -142,5 +144,7 @@ public class Main {
                 break;
         }
 
+
     }
+    */
 }
