@@ -68,7 +68,7 @@ public class Field {
                 new Field(FieldConstants.HUTS_IN_THE_MOUNTAIN_ID, FieldConstants.HUTS_IN_THE_MOUNTAIN_AMOUNT, FieldConstants.HUTS_IN_THE_MOUNTAIN_NAME, FieldConstants.HUTS_IN_THE_MOUNTAIN_TEXT),
                 new Field(FieldConstants.THE_WEREWALL_ID, FieldConstants.THE_WEREWALL_AMOUNT, FieldConstants.THE_WEREWALL_NAME, FieldConstants.THE_WEREWALL_TEXT),
                 new Field(FieldConstants.THE_PIT_ID, FieldConstants.THE_PIT_AMOUNT, FieldConstants.THE_PIT_NAME, FieldConstants.THE_PIT_TEXT),
-                new Field(FieldConstants.GOLD_MIN_ID, FieldConstants.GOLD_MINE_AMOUNT, FieldConstants.GOLD_MINE_NAME, FieldConstants.GOLD_MINE_TEXT)
+                new Field(FieldConstants.GOLD_MINE_ID, FieldConstants.GOLD_MINE_AMOUNT, FieldConstants.GOLD_MINE_NAME, FieldConstants.GOLD_MINE_TEXT)
         };
 /*
         this.fields.add(
