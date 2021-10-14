@@ -3,6 +3,7 @@ package spil;
 public class FieldConstants {
 
     //Field number/ID for each field
+    public static final int START_ID = 0;
     public static final int TOWER_ID = 2;
     public static final int CRATER_ID = 3;
     public static final int PALACE_GATES_ID = 4;
@@ -47,10 +48,10 @@ public class FieldConstants {
     public static final String PALACE_GATES_TEXT = "You have entered through the Palace Gates. It's crowded and you manage to steal a pouch containing " + PALACE_GATES_AMOUNT + " Coins from a man passing by";
     public static final String COLD_DESERT_TEXT = "You have entered the Cold Desert and we will take " + COLD_DESERT_AMOUNT + " Coins";
     public static final String WALLED_CITY_TEXT = "You have entered the Walled City and for that you get " + WALLED_CITY_AMOUNT + " Coins";
-    public static final String MONASTARY_TEXT = "You have now reached a Monastery, you received" + MONASTARY_AMOUNT + "coins";
-    public static final String BLACK_CAVE_TEXT = "Watch out! BlackCave ahead, you will now be punish by" + BLACK_CAVE_AMOUNT + "coins";
-    public static final String HUTS_IN_THE_MOUNTAIN_TEXT = "You found some Huts in the Moutain with " + HUTS_IN_THE_MOUNTAIN_AMOUNT + "leftover coins";
-    public static final String THE_WEREWALL_TEXT = "You have come across the werewall. You lose" + THE_WEREWALL_AMOUNT + "coins but you get an extra turn";
+    public static final String MONASTARY_TEXT = "You have now reached a Monastery, you received " + MONASTARY_AMOUNT + " Coins";
+    public static final String BLACK_CAVE_TEXT = "Watch out! BlackCave ahead, you will now be punish by " + BLACK_CAVE_AMOUNT + " Coins";
+    public static final String HUTS_IN_THE_MOUNTAIN_TEXT = "You found some Huts in the Moutain with " + HUTS_IN_THE_MOUNTAIN_AMOUNT + "leftover Coins";
+    public static final String THE_WEREWALL_TEXT = "You have come across the werewall. You lose" + THE_WEREWALL_AMOUNT + "Coins but you get an extra turn";
     public static final String THE_PIT_TEXT = "You suddenly feel your legs dissapear under you. You barely hang into the ledge to prevent yourself falling into the Pit, though " + THE_PIT_AMOUNT + " Coins slip out of your pocket";
     public static final String GOLD_MINE_TEXT = "You stumple upon a mine filled with Gold you sell for " + GOLD_MINE_AMOUNT + " Coins";
 }

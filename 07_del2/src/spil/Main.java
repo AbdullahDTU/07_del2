@@ -129,12 +129,9 @@ public class Main {
         for (Player player : this.players) {
 
             //Manual pressing of Enter to roll dice
-            /*
             do {
                 userInput = scan.nextLine();
             } while (!userInput.equals(""));
-
-             */
 
             // Roll the Dice
             getRollingDice().rollTheDice();
@@ -150,6 +147,7 @@ public class Main {
 
             // Get field location
             Field currentFieldOLD = this.getBoard().getFields().get(currentPlayerPosition);
+            //Field currentFieldOLD = this.getBoard().getFields().get(currentPlayerPosition);
             Field currentField = this.getBoard().getFields().get(newPlayerPosition);
 
             // Get field Price
@@ -158,7 +156,8 @@ public class Main {
             int newPlayerBalance = currentPlayerBalance + currentFieldPrice;
             player.getAccount().setBalance(newPlayerBalance);
 
-            // Print info
+            // Print info Test
+            /*
             System.out.println("Player: " + player.getPlayerName());
             System.out.println("Old Balance: " + currentPlayerBalance);
             System.out.println("New Balance: " + newPlayerBalance);
@@ -170,6 +169,18 @@ public class Main {
             System.out.println("New FieldName: " + currentField.getFieldName());
             System.out.println("\n");
 
+             */
+
+            //Print Info
+            System.out.println("Sum: " + diceValue);
+            System.out.println("Player: " + player.getPlayerName());
+            System.out.println("Old Balance: " + currentPlayerBalance);
+            System.out.println("New Balance: " + newPlayerBalance);
+            System.out.println("New FieldName: " + currentField.getFieldName());
+            System.out.println("New FieldPrice: " + currentField.getFieldPrice());
+            System.out.println("New FieldText: " + currentField.getFieldText());
+            System.out.println("\n");
+
             if (Constants.WIN_SCORE <= player.getAccount().getBalance()) {
                 this.gameHasFinished = true;
                 printWinMessage();
@@ -179,12 +190,14 @@ public class Main {
     }
 
     private int calculateNewPlayerPosition(int currentPlayerPosition, int diceRollSum) {
-        int possibleNewPosition = currentPlayerPosition + diceRollSum;
+        int possibleNewPosition = currentPlayerPosition + diceRollSum -2;
         int numberOfFields = this.getBoard().getFields().size();
 
+        /*
         if (numberOfFields <= possibleNewPosition) {
             return 0;
         }
+        */
 
         return possibleNewPosition;
     }
