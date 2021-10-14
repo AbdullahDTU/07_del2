@@ -48,17 +48,17 @@ public class Field {
     //Constructor for Field that creates objects
     public void setUpFields() {
         Field[] localFields = new Field[]{
-                new Field(FieldConstants.Tower, FieldConstants.TowerName, FieldConstants.TowerText),
-                new Field(FieldConstants.Crater, FieldConstants.CraterName, FieldConstants.CraterText),
-                new Field(FieldConstants.PalaceGates, FieldConstants.PalaceGatesName, FieldConstants.PalaceGatesText),
-                new Field(FieldConstants.ColdDesert, FieldConstants.ColdDesertName, FieldConstants.ColdDesertText),
-                new Field(FieldConstants.WalledCity, FieldConstants.WalledCityName, FieldConstants.WalledCityText),
-                new Field(FieldConstants.Monastary, FieldConstants.MonastaryName, FieldConstants.MonastaryText),
-                new Field(FieldConstants.BlackCave, FieldConstants.BlackCaveName, FieldConstants.BlackCaveText),
-                new Field(FieldConstants.HutsInTheMountain, FieldConstants.HutsInTheMountainName, FieldConstants.HutsInTheMountainText),
-                new Field(FieldConstants.TheWerewall, FieldConstants.TheWerewallName, FieldConstants.TheWerewallText),
-                new Field(FieldConstants.ThePit, FieldConstants.ThePitName, FieldConstants.ThePitText),
-                new Field(FieldConstants.GoldMine, FieldConstants.GoldMineName, FieldConstants.GoldMineText)
+                new Field(FieldConstants.TOWER_AMOUNT, FieldConstants.TOWER_NAME, FieldConstants.TOWER_TEXT),
+                new Field(FieldConstants.CRATER_AMOUNT, FieldConstants.CRATER_NAME, FieldConstants.CRATER_TEXT),
+                new Field(FieldConstants.PALACE_GATES_AMOUNT, FieldConstants.PALACE_GATES_NAME, FieldConstants.PALACE_GATES_TEXT),
+                new Field(FieldConstants.COLD_DESERT_AMOUNT, FieldConstants.COLD_DESERT_NAME, FieldConstants.COLD_DESERT_TEXT),
+                new Field(FieldConstants.WALLED_CITY_AMOUNT, FieldConstants.WALLED_CITY_NAME, FieldConstants.WALLED_CITY_TEXT),
+                new Field(FieldConstants.MONASTARY_AMOUNT, FieldConstants.MONASTARY_NAME, FieldConstants.MONASTARY_TEXT),
+                new Field(FieldConstants.BLACK_CAVE_AMOUNT, FieldConstants.BLACK_CAVE_NAME, FieldConstants.BLACK_CAVE_TEXT),
+                new Field(FieldConstants.HUTS_IN_THE_MOUNTAIN_AMOUNT, FieldConstants.HUTS_IN_THE_MOUNTAIN_NAME, FieldConstants.HUTS_IN_THE_MOUNTAIN_TEXT),
+                new Field(FieldConstants.THE_WEREWALL_AMOUNT, FieldConstants.THE_WEREWALL_NAME, FieldConstants.THE_WEREWALL_TEXT),
+                new Field(FieldConstants.THE_PIT_AMOUNT, FieldConstants.THE_PIT_NAME, FieldConstants.THE_PIT_TEXT),
+                new Field(FieldConstants.GOLD_MINE_AMOUNT, FieldConstants.GOLD_MINE_NAME, FieldConstants.GOLD_MINE_TEXT)
         };
 /*
         this.fields.add(
