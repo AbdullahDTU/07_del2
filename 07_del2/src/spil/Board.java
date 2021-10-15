@@ -6,6 +6,7 @@ import java.util.List;
 public class Board {
     private List<Field> fields;
 
+    //Field Objects that includes ID, Money Count, Field name and Field flavor text
     private static final List<Field> startupFields = Arrays.asList(
             //new Field(FieldConstants.START_ID, FieldConstants.TOWER_AMOUNT, FieldConstants.TOWER_NAME, FieldConstants.TOWER_TEXT),
             //new Field(FieldConstants.START_ID, FieldConstants.TOWER_AMOUNT, FieldConstants.TOWER_NAME, FieldConstants.TOWER_TEXT),
@@ -22,6 +23,7 @@ public class Board {
             new Field(FieldConstants.GOLD_MINE_ID, FieldConstants.GOLD_MINE_AMOUNT, FieldConstants.GOLD_MINE_NAME, FieldConstants.GOLD_MINE_TEXT)
     );
 
+    //Gets the chosen field value from the list
     public List<Field> getFields() {
         return fields;
     }

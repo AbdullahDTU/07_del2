@@ -112,6 +112,7 @@ public class Main {
         System.out.println("\n");
     }
 
+    //After one of the player's reaches the WinScore, the game ends and prints the balance of both players.
     private void printWinMessage() {
         System.out.println("Game has finished.");
 
@@ -125,6 +126,7 @@ public class Main {
         System.out.println("\n");
     }
 
+    //Responsible for running the game
     private void playRound() {
         for (Player player : this.players) {
 
@@ -156,7 +158,7 @@ public class Main {
             int newPlayerBalance = currentPlayerBalance + currentFieldPrice;
             player.getAccount().setBalance(newPlayerBalance);
 
-            // Print info Test
+            // Print info for debugging Test
             /*
             System.out.println("Player: " + player.getPlayerName());
             System.out.println("Old Balance: " + currentPlayerBalance);
@@ -171,7 +173,7 @@ public class Main {
 
              */
 
-            //Print Info
+            //Info that is printed after each round
             System.out.println("Sum: " + diceValue);
             System.out.println("Player: " + player.getPlayerName());
             System.out.println("Old Balance: " + currentPlayerBalance);
@@ -181,6 +183,7 @@ public class Main {
             System.out.println("New FieldText: " + currentField.getFieldText());
             System.out.println("\n");
 
+            //Checks if any of the players have reached the winscore and then ends the game
             if (Constants.WIN_SCORE <= player.getAccount().getBalance()) {
                 this.gameHasFinished = true;
                 printWinMessage();
@@ -189,6 +192,7 @@ public class Main {
         }
     }
 
+    //Calculates the new player position after throwing dice
     private int calculateNewPlayerPosition(int currentPlayerPosition, int diceRollSum) {
         int possibleNewPosition = currentPlayerPosition + diceRollSum -2;
         int numberOfFields = this.getBoard().getFields().size();
