@@ -20,6 +20,7 @@ public class Account {
         this.ownedProperties = ownedProperties;
     }
 
+    //Lists the owned properties of a player (Will be used later)
     public List<Field> getOwnedProperties() {
         return ownedProperties;
     }

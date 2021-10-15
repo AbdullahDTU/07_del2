@@ -5,28 +5,8 @@ public class RollingDice {
     private Dice die1, die2;
     private int sum;
 
-    public Dice getDie1() {
-        return die1;
-    }
-
-    public void setDie1(Dice die1) {
-        this.die1 = die1;
-    }
-
-    public Dice getDie2() {
-        return die2;
-    }
-
-    public void setDie2(Dice die2) {
-        this.die2 = die2;
-    }
-
     public int getSum() {
         return sum;
-    }
-
-    public void setSum(int sum) {
-        this.sum = sum;
     }
 
     public RollingDice() {

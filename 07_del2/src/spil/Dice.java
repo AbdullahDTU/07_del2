@@ -22,12 +22,6 @@ public class Dice {
 
     }
 
-    public void setFaceValue(int value) //Mutator: face value
-    {
-        faceValue = value;
-
-    }
-
     public int getFaceValue() //Accessor: face value
     {
         return faceValue;
