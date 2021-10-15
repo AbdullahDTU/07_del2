@@ -181,6 +181,23 @@ public class Main {
             System.out.println("New FieldText: " + currentField.getFieldText());
             System.out.println("\n");
 
+            int currentExtraTurn = player.getExtraTurn();
+
+            System.out.println("Current Field ID " + currentField.getFieldID());
+
+
+            if (currentField.getFieldID() == 10) {
+                currentExtraTurn = currentExtraTurn +1;
+                System.out.println("Extra turn count " + currentExtraTurn);
+            }
+
+            if (0 < currentExtraTurn) {
+                System.out.println("Extra turn GIVEN " + currentExtraTurn);
+
+                currentExtraTurn = currentExtraTurn -1;
+                System.out.println("Extra turn Count after usage " + currentExtraTurn);
+            }
+
             //Checks if any of the players have reached the winscore and then ends the game
             if (Constants.WIN_SCORE <= player.getAccount().getBalance()) {
                 this.gameHasFinished = true;
@@ -192,7 +209,7 @@ public class Main {
 
     //Calculates the new player position after throwing dice
     private int calculateNewPlayerPosition(int currentPlayerPosition, int diceRollSum) {
-        int possibleNewPosition = currentPlayerPosition + diceRollSum -2;
+        int possibleNewPosition = currentPlayerPosition + diceRollSum - 2;
         int numberOfFields = this.getBoard().getFields().size();
 
         /*

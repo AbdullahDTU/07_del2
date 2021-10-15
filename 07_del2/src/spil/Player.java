@@ -4,6 +4,7 @@ public class Player {
     private String playerName;
     private int playerPosition;
     private Account account;
+    private int extraTurn = 0;
 
     public String getPlayerName() {
         return playerName;
@@ -40,5 +41,12 @@ public class Player {
         this.account = account;
     }
 
+    public int getExtraTurn() {
+        return extraTurn;
+    }
+
+    public void setExtraTurn(int extraTurn) {
+        this.extraTurn = extraTurn;
+    }
 
 }
