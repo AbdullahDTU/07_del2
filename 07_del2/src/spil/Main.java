@@ -82,6 +82,7 @@ public class Main {
         main.initBoard();
         main.initRollingDice();
 
+        main.printWelcomeMessage();
 
         //Creating two players with 0 money
         Player playerOne = new Player("PlayerOne", null);
@@ -95,13 +96,10 @@ public class Main {
             System.out.println(player.getAccount().getBalance());
         }
 
+        //Do loop to constantly run the game while gameHasFinished is false
         do {
             main.playRound();
         } while (!main.gameHasFinished);
-
-
-        //main.printWelcomeMessage();
-        //main.performDiceRoll();
     }
 
     //A one time welcome message printed at the start of the game
@@ -109,6 +107,7 @@ public class Main {
         System.out.println("Welcome to the Dice Game");
         System.out.println("Player 1 Starts rolling the Dice");
         System.out.println("To roll the dice press Enter");
+        System.out.println("First player to reach 3000 Coins, wins.");
         System.out.println("\n");
     }
 
@@ -170,7 +169,6 @@ public class Main {
             System.out.println("New FieldPrice: " + currentField.getFieldPrice());
             System.out.println("New FieldName: " + currentField.getFieldName());
             System.out.println("\n");
-
              */
 
             //Info that is printed after each round
@@ -205,68 +203,4 @@ public class Main {
 
         return possibleNewPosition;
     }
-
-
-/*
-    //Method that allows the players to roll the dice, add the value to the players' scores and change turns
-    private void performDiceRoll() {
-
-        switch (currentPlayer) {
-
-            //If it Player 1's turn, print out the scores and allow Player 1 to roll the dice
-            case PLAYER_ONE:
-                System.out.println("Player 1's turn to roll the dice");
-                System.out.println("Player 1 Score: " + getPlayerOneBalance() + "\nPlayer 2 Score: " + getPlayerTwoBalance() + "\n");
-
-                do {
-                    userInput = scan.nextLine();
-                } while (!userInput.equals(""));
-
-                //Roll the dice and add the score to the player's total score, then change turns
-                getRollingDice().rollTheDice();
-
-                setPlayerOneBalance(getPlayerOneBalance() + getRollingDice().getSum());
-
-                printSeperator();
-
-                //Checks if Player One has reached 40 points or more and ends the game
-                if (getPlayerOneBalance() >= winScore) {
-                    System.out.println("Player 1 har vundet med " + getPlayerOneBalance() + " points!");
-                    break;
-                }
-
-                switchCurrentPlayer();
-                this.performDiceRoll();
-
-                break;
-
-            //If it Player 2's turn, print out the scores and allow Player 1 to roll the dice
-            case PLAYER_TWO:
-                System.out.println("Player 2's turn to roll the dice");
-                System.out.println("Player 1 Score: " + getPlayerOneBalance() + "\nPlayer 2 Score: " + getPlayerTwoBalance() + "\n");
-
-                do {
-                    userInput = scan.nextLine();
-                } while (!userInput.equals(""));
-
-                //Roll the dice and add the score to the player's total score, then change turns
-                getRollingDice().rollTheDice();
-                setPlayerTwoBalance(getPlayerTwoBalance() + getRollingDice().getSum());
-                printSeperator();
-
-                //Checks if Player Two has reached 40 points or more and ends the game
-                if (getPlayerTwoBalance() >= winScore) {
-                    System.out.println("Player 2 har vundet med " + getPlayerTwoBalance() + " points!");
-                    break;
-                }
-
-                switchCurrentPlayer();
-                this.performDiceRoll();
-
-                break;
-        }
-
-
-    }
-    */
 }
