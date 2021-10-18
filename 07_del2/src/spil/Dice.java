@@ -1,37 +1,51 @@
 package spil;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class Dice {
+    private ArrayList<Die> rollingDice;
+    private int sum;
 
-    private final int MAX = 6; // maximum face value
-
-    private int faceValue; // current value showing on the die
-
-
-    public Dice() //Constructor: Sets the initial face value
-    {
-        faceValue = 1;
-
+    public ArrayList<Die> getRollingDice() {
+        return rollingDice;
     }
 
-    public int roll() // Rolls the die and returns result
-    {
-        faceValue = (int) (Math.random() * MAX) + 1;
-
-
-        return faceValue;
-
+    public void setRollingDice(ArrayList<Die> rollingDice) {
+        this.rollingDice = rollingDice;
     }
 
-    public int getFaceValue() //Accessor: face value
-    {
-        return faceValue;
+    public void setSum(int sum) {
+        this.sum = sum;
     }
 
-    public String toString() //returns a string representation of the die
-    {
-        String result = Integer.toString(faceValue);
-
-        return result;
+    public int getSum() {
+        return sum;
     }
 
-} 
+    public void setupRollingDice() {
+        this.rollingDice = new ArrayList<Die>();
+        Die die1 = new Die();
+        Die die2 = new Die();
+
+        this.sum = 0;
+
+        this.rollingDice.addAll(Arrays.asList(die1, die2));
+    }
+
+    public Dice() { //Constructor: Sets the initial face value
+        this.setupRollingDice();
+    }
+
+    public void rollTheDice() {
+        int currentSum = 0;
+
+        for (Die die : this.rollingDice) {
+            die.roll();
+            currentSum += die.getFaceValue();
+            System.out.println("Die: " + die.getFaceValue());
+        }
+
+        this.setSum(currentSum);
+    }
+}

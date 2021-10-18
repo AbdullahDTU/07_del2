@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class Main {
     private boolean gameHasFinished;
     private Board board;
-    private RollingDice rollingDice;
+    private Dice dice;
     private List<Player> players; // List of players
 
     //Scanner to check for user keypress input
@@ -35,16 +35,16 @@ public class Main {
         this.board = new Board();
     }
 
-    public RollingDice getRollingDice() {
-        return rollingDice;
+    public Dice getDice() {
+        return dice;
     }
 
-    public void setRollingDice(RollingDice rollingDice) {
-        this.rollingDice = rollingDice;
+    public void setDice(Dice dice) {
+        this.dice = dice;
     }
 
-    public void initRollingDice() {
-        this.rollingDice = new RollingDice();
+    public void initDice() {
+        this.dice = new Dice();
     }
 
     public List<Player> getPlayers() {
@@ -80,7 +80,7 @@ public class Main {
         Main main = new Main();
 
         main.initBoard();
-        main.initRollingDice();
+        main.initDice();
 
         main.printWelcomeMessage();
 
@@ -135,8 +135,8 @@ public class Main {
             } while (!userInput.equals(""));
 
             // Roll the Dice
-            getRollingDice().rollTheDice();
-            int diceValue = getRollingDice().getSum();
+            dice.rollTheDice();
+            int diceValue = getDice().getSum();
 
             // Player position
             int currentPlayerPosition = player.getPlayerPosition();
