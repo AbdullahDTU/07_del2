@@ -1,4 +1,4 @@
-package spil;
+package main.java.spil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -149,7 +149,9 @@ public class GameController {
             // Get field Price
             int currentFieldPrice = currentField.getFieldPrice();
             int currentPlayerBalance = player.getAccount().getBalance();
-            int newPlayerBalance = currentPlayerBalance + currentFieldPrice;
+            int newPlayerBalance = calculateNewPlayerBalance(currentPlayerBalance,currentFieldPrice);
+
+            //int newPlayerBalance = currentPlayerBalance + currentFieldPrice;
             player.getAccount().setBalance(newPlayerBalance);
 
             // Print info for debugging Test
@@ -181,7 +183,8 @@ public class GameController {
             System.out.println("Current Field ID " + currentField.getFieldID());
 
 
-            if (currentField.getFieldID() == 10) {
+            if (currentField.getFieldID() ==
+                    10) {
                 currentExtraTurn = currentExtraTurn + 1;
                 System.out.println("Extra turn count " + currentExtraTurn);
             }
@@ -215,4 +218,15 @@ public class GameController {
 
         return possibleNewPosition;
     }
+
+    public static int calculateNewPlayerBalance(int currentPlayerBalance, int balanceToAdd) {
+        int newPlayerBalance = balanceToAdd + currentPlayerBalance;
+
+        if (newPlayerBalance < 0) {
+            return 0;
+        }
+
+        return newPlayerBalance;
+    }
+
 }

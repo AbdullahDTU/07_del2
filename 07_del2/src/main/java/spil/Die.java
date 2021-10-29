@@ -1,4 +1,4 @@
-package spil;
+package main.java.spil;
 
 public class Die {
     private int faceValue; // current value showing on the die

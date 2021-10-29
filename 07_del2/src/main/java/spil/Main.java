@@ -1,4 +1,4 @@
-package spil;
+package main.java.spil;
 
 //The main Class which runs the game
 public class Main {
